@@ -1,0 +1,27 @@
+﻿@page
+@model RazorSerge_Project.Pages.LoginModel
+@{
+}
+<form method="post" name="loginFrm" id="loginFrm" runat="server">
+    <h1 style="text-align:center"> כניסת המשתמש</h1>
+    <table id="table1" dir="rtl" align="center">
+        <tr>
+            <td> שם המשתמש:</td>
+            <td><input type="text" name="uName" /></td>
+        </tr>
+        <tr>
+            <td> סיסמה:</td>
+            <td><input type="password" name="pw" id="pw" /></td>
+        </tr>
+        <tr>
+            <!-- submit -->
+            <td colspan="2" align="center">
+                <input type="submit" name="submit" value="התחבר" />
+            </td>
+
+        </tr>
+    </table>
+
+
+</form>
+ 

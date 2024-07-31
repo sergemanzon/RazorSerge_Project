@@ -1,0 +1,53 @@
+﻿@page
+@model RazorSerge_Project.Pages.Content.DogsGaleryModel
+@{
+    ViewData["Title"] = "Dogs Gallery";
+}
+<head>
+    <html>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>גלריית רכבים</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #f2f2f2;
+            font-size: 18px;
+        }
+
+        button {
+            font-size: 18px;
+            padding: 8px 16px;
+            margin: 4px;
+            cursor: pointer;
+        }
+
+            button:hover {
+                background-color: #007bff;
+                color: white;
+            }
+
+        img {
+            display: block;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>גלריית כלבים</h1>
+    <div id="tbl3"></div>
+    <script src="~/js/DogsGalery.js"></script>
+</body>
+</html>

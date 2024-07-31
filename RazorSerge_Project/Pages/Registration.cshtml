@@ -1,0 +1,184 @@
+﻿@page
+@model RazorSerge_Project.Pages.RegistrationModel
+@{
+}
+<style>
+    td, tr {
+        direction: rtl;
+        text-align: right;
+    }
+
+    .RegisterFormTable {
+        border: none;
+    }
+
+    .RegisterFormTable td {
+        border: none;
+    }
+
+    .RegisterFormTable input[type="text"] {
+        text-align: right; /* Align text to right */
+    }
+</style>
+<body>
+<form style="text-align: right;" method="post" class="RegisterForm" name="RegisterForm" onsubmit="return CheckForm();">
+    <h1 style="text-align:right;">עמוד רישום</h1>
+    <table style="text-align: right; direction: rtl; width: 70%" class="RegisterFormTable">
+        <tr>
+            <td>שם פרטי:</td>
+            <td>
+                <input type="text" name="fName" id="fName">
+            </td>
+            <td>
+                <input type="text" id="mfName" size="30" style="display: none; background-color: Silver; font-weight: bold;" disabled="disabled" />
+            </td>
+        </tr>
+        <tr>
+            <td>שם משפחה:</td>
+            <td>
+                <input type="text" name="lName" id="lName">
+            </td>
+            <td>
+                <input type="text" id="mlName" size="30" style="display: none; background-color: Silver; font-weight: bold;" disabled="disabled" />
+            </td>
+        </tr>
+        <tr>
+            <td>שם משתמש:</td>
+            <td>
+                <input type="text" name="uName" id="uName">
+            </td>
+            <td>
+                <input type="text" id="muName" size="30" style="display: none; background-color: Silver; font-weight: bold;" disabled="disabled" />
+            </td>
+        </tr>
+        <tr>
+            <td>סיסמה:</td>
+            <td>
+                <input type="password" name="password" id="password">
+            </td>
+            <td>
+                <input type="text" id="mPassword" size="30" style="display: none; background-color: Silver; font-weight: bold;" disabled="disabled" />
+            </td>
+        </tr>
+        <tr>
+            <td>אימות סיסמה:</td>
+            <td>
+                <input type="password" name="valPassword" id="valPassword">
+            </td>
+            <td>
+                <input type="text" id="PassError" name="PassError" size="30" style="display: none; background-color: Silver; font-weight: bold;" disabled="disabled" />
+            </td>
+        </tr>
+        <tr>
+            <td>דוא"ל:</td>
+            <td>
+                <input type="text" name="email" id="email" onblur="checkEmail(RegisterForm.email,'דוא~ל')">
+                <input type="text" id="EmailError" size="30" style="display: none; background-color: Silver; font-weight: bold;" disabled="disabled" />
+            </td>
+        </tr>
+        <tr>
+            <td>מס' טלפון:</td>
+            <td>
+                <input type="text" name="phone" id="phone" onblur="validatePhoneNumber(RegisterForm.phone,'טלפון')">
+                <input type="text" id="phoneError" name="phoneError" size="30" style="display: none; background-color: Silver; font-weight: bold;" />
+
+                <select name="prefix" id="prefix" size="1">
+                    <option value="050">050</option>
+                    <option value="052">052</option>
+                    <option value="053">053</option>
+                    <option value="054">054</option>
+                    <option value="057">057</option>
+                    <option value="058">058</option>
+                    <option value="02">02</option>
+                    <option value="03">03</option>
+                    <option value="04">04</option>
+                    <option value="08">08</option>
+                    <option value="077">077</option>
+                </select>
+            </td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td>שנת לידה:</td>
+            <td>
+                <input type="number" min="1900" name="yearBorn" id="yearBorn" max="2024" step="1" value="1997" />
+            </td>
+        </tr>
+        <tr>
+            <td>שם הרחוב:</td>
+            <td>
+                <input type="text" name="address" id="address">
+            </td>
+            <td>
+                <input type="text" id="mAddress" size="30" style="display: none; background-color: Silver; font-weight: bold;" disabled="disabled" />
+            </td>
+        </tr>
+        <tr>
+            <td>מספר בית:</td>
+            <td>
+                <input type="text" name="number" id="number">
+            </td>
+            <td>
+                <input type="text" id="mNumber" size="30" style="display: none; background-color: Silver; font-weight: bold;" disabled="disabled" />
+            </td>
+        </tr>
+        <tr>
+            <td>שם הישוב:</td>
+            <td>
+                <select name="city" id="city" size="1">
+                    <option value="TelAviv">תל אביב</option>
+                    <option value="Haifa">חיפה</option>
+                    <option value="Jerusalem">ירושלים</option>
+                    <option value="BeerSheva">באר שבע</option>
+                    <option value="Holon">חולון</option>
+                    <option value="BatYam">בת ים</option>
+                    <option value="RishonLeZion">ראשון לציון</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>מין:</td>
+            <td>
+                <input type="radio" name="gender" id="gender1" value="male" checked> זכר
+                <input type="radio" name="gender" id="gender2" value="female"> נקבה
+            </td>
+        </tr>
+        <tr>
+            <td>עיסוקים:</td>
+            <td id="hobby-group">
+                <input type="checkbox" name="hobbies" value="FootBall" id="ch1"><label for="ch1">כדורגל</label>&nbsp;&nbsp;&nbsp;
+                <input type="checkbox" name="hobbies" value="BasketBall" id="ch2"><label for="ch2">כדורסל</label>&nbsp;&nbsp;&nbsp;
+                <input type="checkbox" name="hobbies" value="Running" id="ch3"><label for="ch3">ריצות</label>&nbsp;&nbsp;&nbsp;
+                <input type="checkbox" name="hobbies" value="MartialArts" id="ch4"><label for="ch4">אומנויות לחימה</label>&nbsp;&nbsp;&nbsp;
+                <input type="checkbox" name="hobbies" value="Swimming" id="ch5"><label for="ch5">שחיה</label>&nbsp;&nbsp;&nbsp;
+                <input type="checkbox" name="hobbies" value="Cycling" id="ch6"><label for="ch6">אופניים</label>&nbsp;&nbsp;&nbsp;
+                <input type="checkbox" name="hobbies" value="Fitness" id="ch7"><label for="ch7">אימוני חדר כושר</label>&nbsp;&nbsp;&nbsp;
+                <input type="checkbox" name="hobbies" value="Dancing" id="ch8"><label for="ch8">ריקוד</label>&nbsp;&nbsp;&nbsp;
+            </td>
+            <td>
+                <input type="text" id="mHobbies" size="30" style="display: none; background-color: Silver; font-weight: bold;" disabled="disabled" />
+            </td>
+        </tr>
+        <tr>
+            <td>בקשות מיוחדות:</td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <textarea name="specialRequests" id="specialRequests" cols="70" rows="5"></textarea>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                <input type="submit" name="submit" value="שלח">
+                <input type="reset" name="reset" value="נקה" onclick="HideWarnings()">
+            </td>
+        </tr>
+    </table>
+</form>
+@if (!string.IsNullOrEmpty(Model.st))
+{
+    <div>@Html.Raw(Model.st)</div>
+}
+<script src="/js/RegistrationFormCheck.js"></script>
+</body>

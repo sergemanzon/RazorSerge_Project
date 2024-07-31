@@ -1,0 +1,36 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<style>
+    .gallery {
+        display: flex;
+        justify-content: space-around;
+        margin-top: 20px;
+    }
+
+        .gallery img {
+            width: 300px;
+            height: auto;
+            cursor: pointer;
+            border: 2px solid #000;
+            border-radius: 10px;
+            transition: transform 0.3s;
+        }
+
+            .gallery img:hover {
+                transform: scale(1.05);
+            }
+</style>
+
+<h1 style="text-align:center;">Which Gallery to Open?</h1>
+<div class="gallery">
+    <a href="/Content/CarsGalery">
+        <img src="/Assets/cars.jpg" alt="Cars">
+    </a>
+    <a href="/Content/DogsGalery">
+        <img src="/Assets/dogs.jpg" alt="Dogs">
+    </a>
+</div>
